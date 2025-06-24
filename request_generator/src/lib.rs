@@ -22,13 +22,12 @@ pub use config::*;
 mod tests;
 
 use snarkvm_console::{
-    account::{Address, PrivateKey},
-    program::{Literal, Value, RegisterType, Request, ProgramID, Identifier, ValueType},
-    types::{Boolean, U64},
+    account::PrivateKey,
+    program::{Value, Request, ProgramID, Identifier, ValueType},
 };
 
 use anyhow::Result;
-use core::str::FromStr;
+// use core::str::FromStr;
 use rand::{CryptoRng, Rng};
 
 /// Creates a Request for a function call with a corresponding fee.

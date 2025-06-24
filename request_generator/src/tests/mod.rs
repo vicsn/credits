@@ -13,17 +13,17 @@
 // limitations under the License.
 
 mod test_bond_public;
-use test_bond_public::*;
+// use test_bond_public::*;
 
 mod test_transfer_public;
-use test_transfer_public::*;
+// use test_transfer_public::*;
 
 use crate::create_request;
 
 use snarkvm_console::{
     account::{Address, PrivateKey},
     program::{Literal, Value, Request, ValueType, ProgramID, Identifier},
-    types::{Boolean, U64},
+    types::U64,
 };
 use snarkvm_utilities::TestRng;
 

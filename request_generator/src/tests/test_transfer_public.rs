@@ -45,13 +45,13 @@ pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Request<Curren
 }
 
 #[test]
-fn test_bond_public_local() {
+fn test_transfer_public_local() {
     let rng = &mut TestRng::default();
 
     // Sample the request.
-    let request = sample_bond_public(rng).unwrap();
+    let request = sample_transfer_public(rng).unwrap();
     // Serialize the request to a string.
     let request_string = request.to_string();
     // Write the request to a file.
-    std::fs::write("bond_public_request.txt", request_string).unwrap();
+    std::fs::write("transfer_public_request.txt", request_string).unwrap();
 }
