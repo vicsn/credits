@@ -50,7 +50,7 @@ fn test_fee_public_local() {
     let rng = &mut TestRng::fixed(0); // TODO: passing a private key file around might be a safer default, even if this is PoC code.
 
     // Read the execution ID from the file.
-    let execution_id_string = std::fs::read_to_string("execution_id.txt").unwrap();
+    let execution_id_string = std::fs::read_to_string("../execution_id.txt").unwrap();
     let execution_id = Field::<CurrentNetwork>::from_str(&execution_id_string).unwrap();
     // Sample the request.
     let request = sample_fee_public(rng, execution_id).unwrap();

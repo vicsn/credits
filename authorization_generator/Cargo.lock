@@ -444,11 +444,7 @@ dependencies = [
  "aleo-std",
  "anyhow",
  "lazy_static",
- "rand",
- "reqwest",
  "rusty-hook",
- "serde",
- "serde_json",
  "snarkvm",
  "walkdir",
 ]
