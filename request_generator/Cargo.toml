@@ -18,9 +18,11 @@ include = [ "Cargo.toml", "src", "README.md", "LICENSE.md" ]
 license = "Apache-2.0"
 edition = "2021"
 
-[dependencies.snarkvm]
-#path = "../snarkVM"
-version = "=0.16.2"
+[dependencies.snarkvm-console]
+version = "=3.8.0"
+
+[dependencies.snarkvm-utilities]
+version = "=3.8.0"
 
 [dependencies.anyhow]
 version = "1.0.72"

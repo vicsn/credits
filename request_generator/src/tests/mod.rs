@@ -15,33 +15,24 @@
 mod test_bond_public;
 use test_bond_public::*;
 
-mod test_claim_unbond_public;
-use test_claim_unbond_public::*;
-
-mod test_cost;
-
-mod test_set_validator_state;
-use test_set_validator_state::*;
-
 mod test_transfer_public;
 use test_transfer_public::*;
 
-mod test_transfer_public_to_private;
-use test_transfer_public_to_private::*;
+use crate::create_request;
 
-mod test_unbond_delegator_as_validator;
-use test_unbond_delegator_as_validator::*;
-
-mod test_unbond_public;
-use test_unbond_public::*;
-
-use snarkvm::{
-    console::account::{Address, PrivateKey},
-    prelude::TestRng,
+use snarkvm_console::{
+    account::{Address, PrivateKey},
+    program::{Literal, Value, Request, ValueType, ProgramID, Identifier},
+    types::{Boolean, U64},
 };
+use snarkvm_utilities::TestRng;
 
-type CurrentNetwork = snarkvm::console::network::Testnet3;
-type CurrentAleo = snarkvm::circuit::AleoV0;
+use std::str::FromStr;
+
+use anyhow::Result;
+use rand::Rng;
+
+type CurrentNetwork = snarkvm_console::network::MainnetV0;
 
 /// Samples a random private key and address.
 fn sample_account(rng: &mut TestRng) -> (PrivateKey<CurrentNetwork>, Address<CurrentNetwork>) {
