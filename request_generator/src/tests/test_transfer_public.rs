@@ -14,7 +14,7 @@
 
 use super::*;
 
-/// Samples the authorization for `transfer_public`.
+/// Samples the request for `transfer_public`.
 pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Request<CurrentNetwork>> {
     // Sample the sender.
     let (private_key, _) = sample_account(rng);
@@ -26,32 +26,24 @@ pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Request<Curren
     let program_id = ProgramID::from_str("credits.aleo").unwrap();
     let function_name = Identifier::from_str("transfer_public").unwrap();
     // Construct the inputs to the function.
-    let inputs =
-        vec![Value::<CurrentNetwork>::from(Literal::Address(receiver_address)), Value::from(Literal::U64(U64::new(amount_in_microcredits)))];
-    // Construct the input types.
-    let input_types = [
-        ValueType::from_str("address.public").unwrap(),
-        ValueType::from_str("u64.public").unwrap(),
+    let inputs = vec![
+        Value::<CurrentNetwork>::from(Literal::Address(receiver_address)),
+        Value::from(Literal::U64(U64::new(amount_in_microcredits))),
     ];
+    // Construct the input types.
+    let input_types = [ValueType::from_str("address.public").unwrap(), ValueType::from_str("u64.public").unwrap()];
     // Create the request.
-    create_request(
-        &private_key,
-        program_id,
-        function_name,
-        inputs,
-        &input_types,
-        rng,
-    )
+    create_request(&private_key, program_id, function_name, inputs, &input_types, rng)
 }
 
 #[test]
 fn test_transfer_public_local() {
-    let rng = &mut TestRng::default();
+    let rng = &mut TestRng::fixed(0);
 
     // Sample the request.
     let request = sample_transfer_public(rng).unwrap();
     // Serialize the request to a string.
     let request_string = request.to_string();
     // Write the request to a file.
-    std::fs::write("transfer_public_request.txt", request_string).unwrap();
+    std::fs::write("../transfer_public_request.txt", request_string).unwrap();
 }

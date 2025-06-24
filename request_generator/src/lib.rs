@@ -12,22 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[macro_use]
-extern crate lazy_static;
-
-mod config;
-pub use config::*;
+pub type N = snarkvm_console::network::MainnetV0;
 
 #[cfg(test)]
 mod tests;
 
 use snarkvm_console::{
     account::PrivateKey,
-    program::{Value, Request, ProgramID, Identifier, ValueType},
+    program::{Identifier, ProgramID, Request, Value, ValueType},
 };
 
 use anyhow::Result;
-// use core::str::FromStr;
 use rand::{CryptoRng, Rng};
 
 /// Creates a Request for a function call with a corresponding fee.
