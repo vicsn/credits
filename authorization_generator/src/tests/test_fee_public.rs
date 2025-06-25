@@ -28,7 +28,7 @@ pub(crate) fn sample_fee_public(rng: &mut TestRng) -> Result<Authorization<Curre
 
 #[test]
 fn test_fee_public_local() {
-    let rng = &mut TestRng::fixed(0);
+    let rng = &mut TestRng::fixed(1);
 
     // Sample the authorization.
     let fee_authorization = sample_fee_public(rng).unwrap();

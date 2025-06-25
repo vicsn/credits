@@ -34,7 +34,7 @@ pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Transaction<Cu
 
 #[test]
 fn test_transfer_public_local() {
-    let rng = &mut TestRng::fixed(0);
+    let rng = &mut TestRng::fixed(1);
 
     // Sample the tx.
     let tx = sample_transfer_public(rng).unwrap();

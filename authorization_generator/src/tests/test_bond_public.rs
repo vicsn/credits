@@ -34,7 +34,7 @@ pub(crate) fn sample_bond_public(rng: &mut TestRng) -> Result<Transaction<Curren
 
 #[test]
 fn test_bond_public_local() {
-    let rng = &mut TestRng::fixed(0);
+    let rng = &mut TestRng::fixed(1);
 
     // Sample the tx.
     let tx = sample_bond_public(rng).unwrap();
