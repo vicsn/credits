@@ -867,9 +867,12 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "rand",
+ "rand_chacha",
  "rusty-hook",
- "snarkvm-console",
- "snarkvm-utilities",
+ "snarkvm-console-account",
+ "snarkvm-console-network",
+ "snarkvm-console-program",
+ "snarkvm-console-types",
  "walkdir",
 ]
 
@@ -1043,20 +1046,6 @@ dependencies = [
  "snarkvm-parameters",
  "snarkvm-utilities",
  "thiserror 2.0.12",
-]
-
-[[package]]
-name = "snarkvm-console"
-version = "3.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f5fb557a08ab8390029217766ff39b1c4b0c7d53a6e0aeb520d6502ef1638c1"
-dependencies = [
- "snarkvm-console-account",
- "snarkvm-console-algorithms",
- "snarkvm-console-collections",
- "snarkvm-console-network",
- "snarkvm-console-program",
- "snarkvm-console-types",
 ]
 
 [[package]]

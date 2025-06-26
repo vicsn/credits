@@ -12,15 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-pub type N = snarkvm_console::network::MainnetV0;
-
 #[cfg(test)]
 mod tests;
 
-use snarkvm_console::{
-    account::PrivateKey,
-    program::{Identifier, ProgramID, Request, Value, ValueType},
-};
+use snarkvm_console_account::PrivateKey;
+use snarkvm_console_program::{Identifier, ProgramID, Request, Value, ValueType};
+pub type N = snarkvm_console_network::MainnetV0;
 
 use anyhow::Result;
 use rand::{CryptoRng, Rng};

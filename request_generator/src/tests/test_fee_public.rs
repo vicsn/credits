@@ -16,7 +16,7 @@ use super::*;
 
 /// Samples the request for `fee_public`.
 pub(crate) fn sample_fee_public(
-    rng: &mut TestRng,
+    rng: &mut ChaChaRng,
     execution_id: Field<CurrentNetwork>,
 ) -> Result<Request<CurrentNetwork>> {
     // Sample the sender.
@@ -47,7 +47,8 @@ pub(crate) fn sample_fee_public(
 
 #[test]
 fn test_fee_public_local() {
-    let rng = &mut TestRng::fixed(0); // TODO: passing a private key file around might be a safer default, even if this is PoC code.
+    let rng = &mut ChaChaRng::seed_from_u64(0u64);
+    // let rng = &mut TestRng::fixed(0); // TODO: passing a private key file around might be a safer default, even if this is PoC code.
 
     // Read the execution ID from the file.
     let execution_id_string = std::fs::read_to_string("../execution_id.txt").unwrap();

@@ -15,10 +15,20 @@ include = [ "Cargo.toml", "src", "README.md", "LICENSE.md" ]
 license = "Apache-2.0"
 edition = "2021"
 
-[dependencies.snarkvm-console]
+[dependencies.snarkvm-console-account]
+# path = "../../snarkVM_2/console/account"
 version = "=3.8.0"
 
-[dependencies.snarkvm-utilities]
+[dependencies.snarkvm-console-network]
+# path = "../../snarkVM_2/console/network"
+version = "=3.8.0"
+
+[dependencies.snarkvm-console-program]
+# path = "../../snarkVM_2/console/program"
+version = "=3.8.0"
+
+[dependencies.snarkvm-console-types]
+# path = "../../snarkVM_2/console/types"
 version = "=3.8.0"
 
 [dependencies.anyhow]
@@ -26,6 +36,9 @@ version = "1.0.72"
 
 [dependencies.rand]
 version = "0.8"
+
+[dependencies.rand_chacha]
+version = "0.3.0"
 
 [dev-dependencies.rusty-hook]
 version = "0.11.2"

@@ -18,22 +18,22 @@ mod test_transfer_public;
 
 use crate::create_request;
 
-use snarkvm_console::{
-    account::{Address, PrivateKey},
-    program::{Identifier, Literal, ProgramID, Request, Value, ValueType},
-    types::{Field, U64},
-};
-use snarkvm_utilities::TestRng;
+use snarkvm_console_account::{Address, PrivateKey};
+use snarkvm_console_program::{Identifier, Literal, ProgramID, Request, Value, ValueType};
+use snarkvm_console_types::{Field, U64};
+
+type CurrentNetwork = snarkvm_console_network::MainnetV0;
 
 use std::str::FromStr;
 
 use anyhow::Result;
-use rand::Rng;
+use rand::{Rng, SeedableRng};
+use rand_chacha::ChaChaRng;
 
-type CurrentNetwork = snarkvm_console::network::MainnetV0;
+// TODO: use proper RNG.
 
 /// Samples a random private key and address.
-fn sample_account(rng: &mut TestRng) -> (PrivateKey<CurrentNetwork>, Address<CurrentNetwork>) {
+fn sample_account(rng: &mut ChaChaRng) -> (PrivateKey<CurrentNetwork>, Address<CurrentNetwork>) {
     let private_key = PrivateKey::<CurrentNetwork>::new(rng).unwrap();
     let address = Address::<CurrentNetwork>::try_from(&private_key).unwrap();
     (private_key, address)

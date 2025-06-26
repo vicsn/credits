@@ -15,7 +15,7 @@
 use super::*;
 
 /// Samples the request for `bond_public`.
-pub(crate) fn sample_bond_public(rng: &mut TestRng) -> Result<Request<CurrentNetwork>> {
+pub(crate) fn sample_bond_public(rng: &mut ChaChaRng) -> Result<Request<CurrentNetwork>> {
     // Sample the sender.
     let (private_key, _) = sample_account(rng);
     // Sample the validator.
@@ -38,7 +38,9 @@ pub(crate) fn sample_bond_public(rng: &mut TestRng) -> Result<Request<CurrentNet
 
 #[test]
 fn test_bond_public_local() {
-    let rng = &mut TestRng::fixed(0);
+    let rng = &mut ChaChaRng::seed_from_u64(0u64);
+    // let rng = &mut rand::rngs::OsRng;
+    // let rng = &mut TestRng::fixed(0);
 
     // Sample the request.
     let request = sample_bond_public(rng).unwrap();

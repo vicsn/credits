@@ -15,7 +15,7 @@
 use super::*;
 
 /// Samples the request for `transfer_public`.
-pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Request<CurrentNetwork>> {
+pub(crate) fn sample_transfer_public(rng: &mut ChaChaRng) -> Result<Request<CurrentNetwork>> {
     // Sample the sender.
     let (private_key, _) = sample_account(rng);
     // Sample the receiver.
@@ -38,7 +38,8 @@ pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Request<Curren
 
 #[test]
 fn test_transfer_public_local() {
-    let rng = &mut TestRng::fixed(0);
+    let rng = &mut ChaChaRng::seed_from_u64(0u64);
+    // let rng = &mut TestRng::fixed(0);
 
     // Sample the request.
     let request = sample_transfer_public(rng).unwrap();
