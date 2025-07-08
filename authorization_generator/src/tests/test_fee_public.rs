@@ -16,14 +16,12 @@ use super::*;
 
 /// Samples the execution for `fee_public`.
 pub(crate) fn sample_fee_public(rng: &mut TestRng) -> Result<Authorization<CurrentNetwork>> {
-    // Sample the sender.
-    let (private_key, _) = sample_account(rng);
     // Read the request from the file.
     let request_string = std::fs::read_to_string("../fee_public_request.txt")?;
     // Parse the request from the string.
     let request: Request<CurrentNetwork> = Request::from_str(&request_string)?;
     // Create the authorization from the request.
-    PROCESS.authorize_credits_public::<CurrentAleo, _>(&private_key, request, rng)
+    PROCESS.authorize_request::<CurrentAleo, _>(request, rng)
 }
 
 #[test]

@@ -16,14 +16,12 @@ use super::*;
 
 /// Samples the execution for `transfer_public`.
 pub(crate) fn sample_transfer_public(rng: &mut TestRng) -> Result<Transaction<CurrentNetwork>> {
-    // Sample the sender.
-    let (private_key, _) = sample_account(rng);
     // Read the request from the file.
     let request_string = std::fs::read_to_string("../transfer_public_request.txt")?;
     // Parse the request from the string.
     let request: Request<CurrentNetwork> = Request::from_str(&request_string)?;
     // Create the authorization from the request.
-    let authorization = PROCESS.authorize_credits_public::<CurrentAleo, _>(&private_key, request, rng)?;
+    let authorization = PROCESS.authorize_request::<CurrentAleo, _>(request, rng)?;
     // Create a DB store for the consensus.
     let store = ConsensusStore::<CurrentNetwork, CurrentStorage>::open(StorageMode::new_test(None)).unwrap();
     // Create a VM from the store.

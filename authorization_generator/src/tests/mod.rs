@@ -20,10 +20,7 @@ use crate::PROCESS;
 
 use aleo_std::StorageMode;
 use snarkvm::{
-    console::{
-        account::{Address, PrivateKey},
-        program::Request,
-    },
+    console::program::Request,
     ledger::store::{ConsensusStore, helpers::memory::ConsensusMemory},
     prelude::{Authorization, Transaction},
     synthesizer::VM,
@@ -37,10 +34,3 @@ use anyhow::Result;
 type CurrentNetwork = snarkvm::console::network::MainnetV0;
 type CurrentAleo = snarkvm::circuit::AleoV0;
 type CurrentStorage = ConsensusMemory<CurrentNetwork>;
-
-/// Samples a random private key and address.
-fn sample_account(rng: &mut TestRng) -> (PrivateKey<CurrentNetwork>, Address<CurrentNetwork>) {
-    let private_key = PrivateKey::<CurrentNetwork>::new(rng).unwrap();
-    let address = Address::<CurrentNetwork>::try_from(&private_key).unwrap();
-    (private_key, address)
-}
