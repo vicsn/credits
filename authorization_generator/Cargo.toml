@@ -20,7 +20,7 @@ edition = "2021"
 
 [dependencies.snarkvm]
 git = "https://github.com/ProvableHQ/snarkVM.git"
-rev = "d8d3f3116"
+rev = "c1ea0705c"
 
 [dependencies.aleo-std]
 version = "1.0.1"
